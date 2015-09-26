@@ -1,7 +1,7 @@
 ---
 title: "The Codebook"
 author: "Anatoly.Solovyev"
-date: "September 27, 2015"
+date: "September 26, 2015"
 ---
 
 Coursera - Getting and Cleaning Data Course Project

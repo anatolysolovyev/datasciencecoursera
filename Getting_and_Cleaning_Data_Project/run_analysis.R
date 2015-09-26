@@ -59,6 +59,3 @@ tidy_data<- combined %>%
 #writing out the table so the data can be seen in txt format
 
 write.table(tidy_data, file = "tidy_data.txt", row.name = FALSE)
-
-dim(tidy_data)
-
