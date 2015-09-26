@@ -4,20 +4,24 @@ author: "Anatoly.Solovyev"
 date: "September 27, 2015"
 ---
 
-This was an exercise in reading in and manipulating data from a wearable computing pilot for the Samsung Galaxy S smartphone. The main purpose of this assignment extract of the needed data, format it, and summarize it into an tidy data set.
+Coursera - Getting and Cleaning Data Course Project
 
-The tidy data set has 81 columns and 180 observation.
+The way the script works is: 
 
-An example of what the columns mean is Time_Accelerometer_Mean()-X would refer to the mean of the X-axis acceleration based on time. Another example would be Frequency_Accelerometer_Jerk_Magnitude_MeanFreq which would be the measurement of mean of the frequency (X,Y, and Z axes) for the acceleration's jerk's magnitude.
+1. Extracting the data using the read.table() and assigning variables to the data 
 
-The MeanFreq() variables were added because they weighted mean of frequency components, which was thought to be imporant because it gives the average mean frequency for specific measurements.
+2. Combining all of the data for each type of data, train and test, using the cbind function
 
-Below are the list of variables of measurements -Time_Accelerometer_Mean X,Y,Z -Time_Gravity_Accelerometer X,Y,Z -Time_Accelerometer_Jerk_Mean X,Y,Z -Time_Gyroscope_Mean X,Y,Z -Time_Gyroscope_Jerk_Mean X,Y,Z -Time_Accelerometer_Magnitude_Mean -Time_Accelerometer_Jerk_Magnitude_Mean -Time_Gyroscope_Magnitude_Mean -Time_Gyroscope_Jerk_Magnitude_Mean
+3. Combining test and train data together using the rbind() function
 
--Frequency_Accelerometer_Mean X,Y,Z -Frequency_Gravity_Accelerometer X,Y,Z -Frequency_Accelerometer_Jerk_Mean X,Y,Z -Frequency_Gyroscope_Mean X,Y,Z -Frequency_Gyroscope_Jerk_Mean X,Y,Z -Frequency_Accelerometer_Magnitude_Mean -Frequency_Accelerometer_Jerk_Magnitude_Mean -Frequency_Gyroscope_Magnitude_Mean -Frequency_Gyroscope_Jerk_Magnitude_Mean
+4. Inputing the column names using the function colnames()
 
--Time_Accelerometer_StandDeviation X,Y,Z -Time_Accelerometer_Jerk_StandDeviation X,Y,Z -Time_Gyroscope_StandDeviation X,Y,Z -Time_Gyroscope_Jerk_StandDeviation X,Y,Z -Time_Accelerometer_Magnitude_StandDeviation -Time_Accelerometer_Jerk_Magnitude_StandDeviation -Time_Gyroscope_Magnitude_StandDeviation -Time_Gyroscope_Jerk_Magnitude_StandDeviation
+5. Removed all duplicate named columns and there corresponding data using the duplicated() function and subsetting
 
--Frequency_Accelerometer_StandDeviation X,Y,Z -Frequency_Accelerometer_Jerk_StandDeviation X,Y,Z -Frequency_Gyroscope_StandDeviation X,Y,Z -Frequency_Gyroscope_Jerk_StandDeviation X,Y,Z -Frequency_Accelerometer_Magnitude_StandDeviation -Frequency_Accelerometer_Jerk_Magnitude_StandDeviation -Frequency_Gyroscope_Magnitude_StandDeviation -Frequency_Gyroscope_Jerk_Magnitude_StandDeviation
+6. Removed all columns that did not refrences mean or std(Standard Deviation) per instructions of the assignment
 
--Frequency_Accelerometer_MeanFreq X,Y,Z -Frequency_Accelerometer_Jerk_MeanFreq X,Y,Z -Frequency_Gyroscope_MeanFreq X,Y,Z -Frequency_Gyroscope_Jerk_MeanFreq X,Y,Z -Frequency_Accelerometer_Magnitude_MeanFreq -Frequency_Accelerometer_Jerk_Magnitude_MeanFreq -Frequency_Gyroscope_Magnitude_MeanFreq -Frequency_Gyroscope_Jerk_Magnitude_MeanFreq
+7. Subsituded descriptions of the activities for the numeric values that the raw data produced
+
+8. Renamed the columns to be more descriptive by using the gsub() function
+
+9. Using dplyr functions group_by() and summarise_each(), found the mean of each subject for each activity for all of the measurements that contained mean of standard deviation
