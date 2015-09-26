@@ -60,3 +60,5 @@ tidy_data<- combined %>%
 
 write.table(tidy_data, file = "tidy_data.txt", row.name = FALSE)
 
+dim(tidy_data)
+
